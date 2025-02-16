@@ -6,7 +6,7 @@ const cors = require('cors');
 const connectDB = require('./db/db');
 
 const userRoutes = require('./routes/user.routes')
-
+const captainRoutes = require('./routes/captain.routes');
 const app = express();
 
 // Connect to MongoDB
@@ -20,5 +20,5 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRoutes)
-
+app.use('/api/captain', captainRoutes)
 module.exports = app;

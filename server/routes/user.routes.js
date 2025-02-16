@@ -27,7 +27,7 @@ router.post(
 
 // profile
 router.get(
-    '/profile',
+    '/me',
     authMiddleware.authUser,
     userController.getUserProfile
 );
