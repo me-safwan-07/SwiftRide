@@ -1,7 +1,8 @@
 const express = require('express');
 const captainController = require('../controllers/captain.controller');
 const { body } = require('express-validator');
-
+const { authCaptain } = require('../middlewares/auth.middleware');
+const authMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 // GET: /api/captain/
@@ -35,4 +36,9 @@ router.post(
     captainController.loginCaptain
 );
 
+// GET: /api/captain/profile
+router.get('/profile', authMiddleware.authCaptain, captainController.getCaptainProfile);
+
+// GET: /api/captain/logout
+router.get('/logout', authMiddleware.authCaptain, captainController.logoutCaptain);
 module.exports = router;
